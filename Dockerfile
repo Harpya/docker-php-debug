@@ -8,7 +8,7 @@ COPY  xdebug.ini /usr/local/etc/php/conf.d
 COPY  run_fpm.sh /root
 COPY  phalcon.ini /usr/local/etc/php/conf.d/phalcon.ini 
 COPY  zephir.phar /usr/bin/zephir
-
+COPY  test.sh /root
 
 RUN chmod 755 /root/run_fpm.sh
 RUN chmod +x /usr/bin/zephir
@@ -49,3 +49,5 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');" \
     && mv composer.phar /usr/bin/composer
+
+RUN chmod +x /root/test.sh && bash /root/test.sh
